@@ -25,7 +25,7 @@
 int main(int argc, const char *argv[]) {
 	FILE *input;
 	unsigned char line[16];
-	unsigned int i, bytesRead, offset = 0;
+	size_t i, bytesRead, offset = 0;
 
 	if ( argc == 2 ) {
 		input = fopen(argv[1], "rb");
@@ -44,7 +44,7 @@ int main(int argc, const char *argv[]) {
 	}
 
 	do {
-		printf("%08X ", offset);
+		printf("%08lX ", offset);
 		bytesRead = fread(line, 1, 16, input);
 		offset += bytesRead;
 		for ( i = 0; i < bytesRead; i++ ) {
